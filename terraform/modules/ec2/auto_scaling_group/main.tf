@@ -2,6 +2,7 @@ resource "aws_launch_template" "app" {
   name_prefix               = "${var.application}_template"
   image_id                  = local.ami
   instance_type             = var.instance_type
+  key_name                  = aws_key_pair.server_key.key_name
   user_data                 = filebase64("${path.root}/${var.user_data}")
 
   network_interfaces {

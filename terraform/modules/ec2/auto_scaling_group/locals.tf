@@ -1,4 +1,4 @@
-# If the variable 'ami' is empty, then Amazon Linux 2 is selected.
+# If the variable 'ami' is empty, then Ubuntu is selected.
 locals {
-  ami = var.ami != "" ? var.ami : data.aws_ami.AmazonLinux2.id
+  ami = var.ami != "" ? var.ami : data.aws_ami.ubuntu.id
 }
