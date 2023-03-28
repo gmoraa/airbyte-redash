@@ -11,7 +11,7 @@ resource "aws_launch_template" "app" {
   }
 
   block_device_mappings {
-    device_name             = "/dev/sdf"
+    device_name             = "/dev/sda1"
 
     ebs {
       volume_size           = var.root_size

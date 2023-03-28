@@ -14,6 +14,10 @@ locals {
     Airbyte = {
       ports  = [8000]
     }
+
+    Postgres = {
+      ports  = [5432]
+    }
   }
 }
 
