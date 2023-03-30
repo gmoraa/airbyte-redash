@@ -36,9 +36,3 @@ variable "security_groups" {
     default = [""]
     description = "Security groups to be attached to the server."
 }
-
-variable "airbyte_version" {
-  type = string
-  default = "0.40.32"
-  description = "Airbyte version to deploy."
-}

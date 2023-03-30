@@ -6,7 +6,7 @@ resource "aws_db_instance" "postgres" {
   engine                    = "postgres"
   engine_version            = "13.4"
   instance_class            = "db.t3.micro"
-  db_name                   = "rdsdb"
+  db_name                   = "postgres"
   username                  = local.db_creds.username
   password                  = local.db_creds.password
   skip_final_snapshot       = false
@@ -29,12 +29,10 @@ resource "aws_db_subnet_group" "rds" {
 
 # Create Random Password
 resource "random_password" "random_password" {
-  length                    = 16
-  special                   = true
-  override_special          = "!#$%^&()_+"
+  length                    = 32
+  special                   = false
   min_lower                 = 3
   min_upper                 = 3
-  min_special               = 1
   min_numeric               = 1
 }
 

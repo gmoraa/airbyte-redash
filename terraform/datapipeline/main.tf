@@ -29,7 +29,6 @@ module "airbyte" {
     application     = "airbyte"
     subnet_id       = module.network.subnet_1.id
     user_data       = "scripts/airbyte.sh"
-    airbyte_version = "0.40.32"
     security_groups = [
         "${module.security_groups.groups_all_to_intranet[index(module.security_groups.groups_all_to_intranet.*.name, "allow_airbyte_from_intranet")].id}",
         "${module.security_groups.groups_all_to_intranet[index(module.security_groups.groups_all_to_intranet.*.name, "allow_ssh_from_intranet")].id}",
@@ -37,7 +36,8 @@ module "airbyte" {
     ]
     depends_on      = [
       module.database,
-      module.security_groups
+      module.security_groups,
+      local_file.airbyte
     ]
 }
 
@@ -54,6 +54,7 @@ module "redash" {
     ]
     depends_on      = [
       module.database,
-      module.security_groups
+      module.security_groups,
+      local_file.airbyte
     ]
 }
